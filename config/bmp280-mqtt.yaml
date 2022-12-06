@@ -1,0 +1,50 @@
+esphome:
+  name: bmp280-mqtt
+
+esp32:
+  board: nodemcu-32s
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+#api:
+#  encryption:
+#    key: "i0S+Wr4X1VPGfmPwPTItHgEGgZ/f5lTvk9j5wm9/CX0="
+
+ota:
+  password: "d18989b317b4c54489939f00f13e8d33"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Bmp280-Mqtt Fallback Hotspot"
+    password: "W2mmDQTriY3A"
+
+captive_portal:
+
+mqtt:
+  broker: 192.168.2.176
+
+i2c:
+  sda: 21
+  scl: 22
+  scan: true
+  id: bus_a
+
+sensor:
+  - platform: bmp280
+    i2c_id: bus_a
+    temperature:
+      name: "Outside Temperature"
+      oversampling: 16x
+    pressure:
+      name: "Outside Pressure"
+    iir_filter: 2x
+    address: 0x76
+    update_interval: 60s

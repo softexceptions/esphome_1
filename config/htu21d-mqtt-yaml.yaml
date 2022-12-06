@@ -1,0 +1,30 @@
+esphome:
+  name: htu21d-mqtt-yaml
+
+esp32:
+  board: nodemcu-32s
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "AGmQMZh6c73WQXGwMqEE014igwBfszvUSHbtDP8QWx8="
+
+ota:
+  password: "91f0afacdaf79056e09147dcb7843768"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Htu21D-Mqtt-Yaml"
+    password: "93hcYKOruoUM"
+
+captive_portal:
+    

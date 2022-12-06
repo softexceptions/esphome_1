@@ -1,0 +1,30 @@
+esphome:
+  name: switch-mqtt
+
+esp32:
+  board: nodemcu-32s
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "PYgjHS0fDVetZDgfan23PMCXy0m5rNmExJ9rU7JfV30="
+
+ota:
+  password: "04e7635ba9aee832d671ae6c76a6ec8d"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Switch-Mqtt Fallback Hotspot"
+    password: "NAm4LI5BLwYS"
+
+captive_portal:
+    
